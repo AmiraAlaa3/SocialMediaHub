@@ -1,0 +1,63 @@
+body {
+    background-color: #f0ecff;
+}
+
+.navbar-brand {
+    font-family: 'Borel', 'Cairo',
+        sans-serif;
+
+}
+.card-cursor{
+      cursor: pointer;
+}
+#add-post {
+    position: fixed;
+    z-index: 999;
+    right: 7%;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 40px;
+    font-weight: 900;
+    background-color: #04a973;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #fff !important;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+
+.wrap .img {
+    height: 200px;
+}
+
+.img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@media (min-width: 576px) {
+    .containerLogin {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .containerLogin {
+        max-width: 720px;
+    }
+
+}
