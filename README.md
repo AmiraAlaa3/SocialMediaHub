@@ -12,5 +12,5 @@
 
 **Project Link:** [SocialHub](http://www.socialhub.com)
 
-**GitHub Repository:** [GitHub/SocialHub]([https://github.com/yourusername/SocialHub])
+**GitHub Repository:** [GitHub/SocialHub](https://github.com/AmiraAlaa3/SocialMediaHub)
 
