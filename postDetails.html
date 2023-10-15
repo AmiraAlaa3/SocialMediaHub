@@ -27,12 +27,14 @@
     rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="./Style/style.css">
-  <link rel="stylesheet" href="./Style/switchBtn.css">
   <!-- axios -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <title>SociUnityHub</title>
 </head>
 <body>
+  <div id="loader">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
      <!-- modals -->
   <!-- login modal -->
   <div class="modal fade" id="login-model" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -126,7 +128,7 @@
                             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link card-cursor"  onclick="profileClick();" >Profile</a>
                           </li>
                         </ul>
                         <!-- user non-login -->
@@ -138,10 +140,11 @@
                         </div>
                         <!-- user login -->
                         <div class="d-flex  w-100 justify-content-end align-items-center" id="login-div">
-                          <h6 id="username-nav" class="pe-2">
-                          </h6>
-                          <img class="rounded-circle border-5" style="width: 40px; height: 40px;" src="./images/user.png"
-                            alt="user-image" id="user-image-nav">
+                          <div class="d-flex align-items-center" >
+                            <h6 id="username-nav" class="pe-2"></h6>
+                            <img class="rounded-circle border-5" style="width: 40px; height: 40px;" src="./images/user.png"
+                              alt="user-image" id="user-image-nav">
+                          </div>
                           <button type="button" class="btn btn-danger mx-2" id="btn-logout" onclick="logout();">Logout</button>
                         </div>
               

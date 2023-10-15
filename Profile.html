@@ -32,7 +32,6 @@
   <title>SociUnityHub</title>
 </head>
 <body>
-     <!-- ======= LOADER ======== -->
   <div id="loader">
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
   </div>
@@ -185,7 +184,7 @@
                         <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link card-cursor"  onclick="profileClick();">Profile</a>
+                        <a class="nav-link card-cursor" onclick="profileClick();">Profile</a>
                       </li>
                     </ul>
                     <!-- user non-login -->
@@ -215,16 +214,46 @@
   <div class="container mt-5 pt-4" style="height: 1000px;">
     <div class="d-flex justify-content-center">
       <div class="col-9">
-        <!-- posts -->
+        <div class="mt-5" id="profile-header">
+          <div class="card mb-3 shadow">
+            <div class="row">
+              <div class="col-md-4 col-lg-3 d-flex align-items-center justify-content-center profile p-3">
+                <!-- user img col -->
+                <img src="./images/user.png" class="rounded-start border-1" alt="user-image" 
+                      id="profile-img" style="width: 120px; height: 120px; ">
+              </div>
+              <div class="col-md-4 d-flex flex-column justify-content-evenly profile p-3">
+                <p id="profile-email"><span class="me-1 fw-bold">Email:</span>@gmail.com</p>
+                <p id="profile-userName"><span class="me-1 fw-bold">User Name:</span>userName</p>
+                <p id="profile-name"><span class="me-1 fw-bold">Name:</span>name</p>
+              </div>
+              <div class="col-md-4 d-flex flex-column justify-content-evenly profile p-3">
+                <div id="post-number">
+                    <span class="me-1 fs-1" id="count-post">13</span> 
+                    <span style="color: rgb(172,172,172); font-weight: 100px;">Post</span>
+                </div>
+                <div id="comment-number">
+                    <span class="me-1 fs-1" id="comments_count">13</span>
+                    <span style="color: rgb(172,172,172); font-weight: 100px;">Comment</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="my-5">
+            <h2 class="py-3" id="userName-post">Posts</h2>
+        </div>
         <div id="posts">
-          <!-- post -->
+           
         </div>
       </div>
     </div>
   </div>
   <!-- javascript -->
    <script src="./Js/mainLogic.js"></script>
-   <script src="./Js/home.js"></script>
+   <script src="./Js/profile.js"></script>
+   <script src="./Js/poatDetails.js"></script>
+ 
    <!-- icon -->
    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

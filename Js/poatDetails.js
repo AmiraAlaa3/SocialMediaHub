@@ -2,10 +2,12 @@
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 const postId = params.get('postId');
-getPost()
+
 function getPost() {
+   toggleLoader(true);
    axios.get(baseUrl + `/posts/${postId}`)
       .then(function (response) {
+         toggleLoader(false);
          let post = response.data.data;
          let comments = response.data.data.comments;
          let author = response.data.data.author.name;
@@ -76,8 +78,10 @@ function getPost() {
          });
 
       })
+      .catch((error) => {
+       const message =error.response.data.message
+      })
 }
-
 function isValidURL(url) {
    // Regular expression to match common URL patterns
    const urlPattern = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w.]*)*\/?$/;
@@ -103,3 +107,4 @@ function addComment() {
          showAlert(error.response.data.message, 'danger')
        })
 }
+getPost()

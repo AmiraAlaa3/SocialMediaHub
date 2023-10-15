@@ -72,7 +72,7 @@ function Register() {
           const message = error.response.data.message;
           showAlert(message, 'danger')
        });
- }
+}
 // login
 function loginClicked() {
     let name = document.getElementById("username-input").value;
@@ -124,7 +124,7 @@ function showAlert(message, type = 'success') {
        wrapper.remove(); // Remove the alert from the DOM
     }, 2000);
  
- }
+}
 
 function currentUser() {
     let user = null;
@@ -133,4 +133,145 @@ function currentUser() {
        user = JSON.parse(userData);
     }
     return user;
+}
+function isValidURL(url) {
+   // Regular expression to match common URL patterns
+   const urlPattern = /^(https?:\/\/)?([\w.]+)\.([a-z]{2,6}\.?)(\/[\w.]*)*\/?$/;
+   return urlPattern.test(url);
+}
+function createNewPost() {
+   let postId=document.getElementById('post-id-input').value;
+   let isCreate = postId == null || postId == "";
+  
+   let postTitle = document.getElementById("post-title").value;
+   let postBody = document.getElementById("post-body").value;
+   let image = document.getElementById("post-img").files[0];
+   const token = localStorage.getItem("token");
+
+   const formData = new FormData();
+   formData.append('title', postTitle);
+   formData.append('body', postBody);
+   formData.append('image', image);
+   
+   let url=``;
+   const header = {
+      "Content-Type": "multipart/form-data",
+      "Authorization": `Bearer ${token}`
+   }
+   if(isCreate){
+      url=`${baseUrl}/posts`;
+      axios.post(url, formData, {
+         headers: header
+      })
+      .then(function (response) {
+         // Close the modal
+         const modal = document.getElementById('Add-post-model');
+         const modalInstance = bootstrap.Modal.getInstance(modal);
+         modalInstance.hide();
+         showAlert('Create New Post successful!', 'success');
+         getPosts();
+      })
+      .catch(function (error) {
+         const message = error.response.data.message;
+         showAlert(message, 'danger')
+      });
+
+   }
+   else{
+      url=`${baseUrl}/posts/${postId}`;
+      formData.append("_method","put")
+      axios.post(url, formData, {
+         headers: header
+      })
+      .then(function (response) {
+         // Close the modal
+         const modal = document.getElementById('Add-post-model');
+         const modalInstance = bootstrap.Modal.getInstance(modal);
+         modalInstance.hide();
+         showAlert('Update Post successful!', 'success');
+         getPosts();
+      })
+      .catch(function (error) {
+         const message = error.response.data.message;
+         showAlert(message, 'danger')
+      });
+
+   }
+  
+}
+
+function editPost(postObj) {
+   let postEdit = JSON.parse(decodeURIComponent(postObj));
+   document.getElementById('post-id-input').value = postEdit.id;
+   document.getElementById("Add-postModalLabel").innerHTML = "Edit Post";
+   document.getElementById('post-modal-submit-btn').innerHTML = 'Update';
+   document.getElementById("post-title").value = postEdit.title;
+   document.getElementById("post-body").value = postEdit.body;
+   
+   let postModal = new bootstrap.Modal(document.getElementById('Add-post-model'), {});
+   postModal.toggle();
+}
+
+function addBtnClick(){
+   document.getElementById('post-id-input').value ="";
+   document.getElementById("Add-postModalLabel").innerHTML = "Create A New Post";
+   document.getElementById('post-modal-submit-btn').innerHTML = 'Create';
+   document.getElementById("post-title").value = '';
+   document.getElementById("post-body").value = '';
+   
+   let postModal = new bootstrap.Modal(document.getElementById('Add-post-model'), {});
+   postModal.toggle();
+}
+
+function deletePostBtn(postObj){
+   let postDelete = JSON.parse(decodeURIComponent(postObj));
+   document.getElementById("delete-post-id").value = postDelete.id;
+   let postModal = new bootstrap.Modal(document.getElementById('Delete-post-model'), {});
+   postModal.toggle();
+}
+function confirmDelete(){
+   const postId = document.getElementById("delete-post-id").value;
+   const token = localStorage.getItem("token");
+   const url = `${baseUrl}/posts/${postId}`;
+   const header = {
+      "Content-Type": "multipart/form-data",
+      "Authorization": `Bearer ${token}`
+   }
+   axios.delete(url,{headers: header })
+   .then(function (response) {
+      // Close the modal
+      const modal = document.getElementById('Delete-post-model');
+      const modalInstance = bootstrap.Modal.getInstance(modal);
+      modalInstance.hide();
+      getPosts();
+      showAlert('The Post Has Been Delete successful!', 'success');
+   })
+   .catch(function (error) {
+      const message = error.response.data.message;
+      showAlert(message, 'danger')
+   });
+
+}
+function postDetails(postId) {
+   window.location = `postDetails.html?postId=${postId}`;
+}
+function userClick(userId){
+   window.location = `profile.html?userId=${userId}`;
+}
+
+function profileClick(){
+   const user=currentUser();
+   if(user != null){
+       const userId = user.id;
+       window.location = `profile.html?userId=${userId}`;
+   }
+}
+function toggleLoader(show = true)
+{
+    if(show)
+    {
+        document.getElementById("loader").style.visibility = 'visible'
+    }else {
+        document.getElementById("loader").style.visibility = 'hidden'
+    }
 }
