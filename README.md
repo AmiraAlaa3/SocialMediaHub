@@ -10,7 +10,9 @@
 - **Features:** User authentication, content sharing, real-time updates, and more.
 - **Challenges:** Overcame scalability challenges to ensure smooth user interactions.
 
-**Project Link:** [SocialHub]([http://www.socialhub.com](https://652b76c2dafbc179fec11f2c--verdant-longma-977b6e.netlify.app/))
+**Project Link:** [SocialHub](https://652b76c2dafbc179fec11f2c--verdant-longma-977b6e.netlify.app/)
 
 **GitHub Repository:** [GitHub/SocialHub](https://github.com/AmiraAlaa3/SocialMediaHub)
+
+
 
