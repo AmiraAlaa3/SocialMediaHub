@@ -256,14 +256,14 @@ function postDetails(postId) {
    window.location = `postDetails.html?postId=${postId}`;
 }
 function userClick(userId){
-   window.location = `profile.html?userId=${userId}`;
+   window.location = `Profile.html?userId=${userId}`;
 }
 
 function profileClick(){
    const user=currentUser();
    if(user != null){
        const userId = user.id;
-       window.location = `profile.html?userId=${userId}`;
+       window.location = `Profile.html?userId=${userId}`;
    }
 }
 function toggleLoader(show = true)
